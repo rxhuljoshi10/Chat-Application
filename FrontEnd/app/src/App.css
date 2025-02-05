@@ -1,0 +1,27 @@
+.application{
+  place-items: center;
+}
+
+.input-div{
+  place-items: bottom;
+}
+
+.name-field{
+  margin-right: 30px;
+}
+
+#Name{
+  width: 100px;
+
+}
+
+#Message {
+  width: 700px;
+  margin-right: 20px;
+}
+
+#send-message{
+  height: 50px;
+  width: 100px;
+  margin-left: 20px;
+}

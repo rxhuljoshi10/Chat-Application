@@ -4,6 +4,11 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+# Ignore node_modules and build folder in the frontend
+FrontEnd/node_modules/
+FrontEnd/build/
+FrontEnd/.env
+
 ### STS ###
 .apt_generated
 .classpath
