@@ -9,12 +9,14 @@ const ChatApp = () => {
   const [messages, setMessages] = useState([]);
   const [stompClient, setStompClient] = useState(null);
   const chatBoxRef = useRef(null);
+  const base_url = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/messages")
-    .then(response => setMessages(response.data))
-    .catch(error => console.error("Error fetching messages:", error));
-    const socket = new SockJS("http://localhost:8080/chat"); // Backend WebSocket URL
+    axios.get(`${base_url}/api/messages`)
+      .then(response => setMessages(response.data))
+      .catch(error => console.error("Error fetching messages:", error));
+    
+    const socket = new SockJS(`${base_url}/chat`); 
     const client = new Client({
       webSocketFactory: () => socket,
       onConnect: () => {
@@ -30,7 +32,7 @@ const ChatApp = () => {
     return () => {
       client.deactivate();
     };
-  }, []);
+  }, [base_url]);
 
   useEffect(() => {
     if (chatBoxRef.current) {
@@ -81,7 +83,6 @@ const ChatApp = () => {
   );
 };
 
-// Inline styles
 const styles = {
   container: {
     display: "flex",
