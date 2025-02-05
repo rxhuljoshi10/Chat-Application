@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: app
+
+  data:
+    mongodb:
+      uri: mongodb+srv://joshirahul:RahulJoshi@cluster0.xg6qw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      database: chats
+
+

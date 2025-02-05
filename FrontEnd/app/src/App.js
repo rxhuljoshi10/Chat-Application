@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import SockJS from "sockjs-client";
 import { Client } from "@stomp/stompjs";
+import axios from "axios";
 
 const ChatApp = () => {
   const [username, setUsername] = useState("");
@@ -10,6 +11,9 @@ const ChatApp = () => {
   const chatBoxRef = useRef(null);
 
   useEffect(() => {
+    axios.get("http://localhost:8080/api/messages")
+    .then(response => setMessages(response.data))
+    .catch(error => console.error("Error fetching messages:", error));
     const socket = new SockJS("http://localhost:8080/chat"); // Backend WebSocket URL
     const client = new Client({
       webSocketFactory: () => socket,
